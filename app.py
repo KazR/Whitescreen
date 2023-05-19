@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.font import Font
 
 # Create the main application window
 window = tk.Tk()
@@ -9,6 +10,9 @@ window.geometry("400x300")
 # Set the background color to white
 window.configure(bg="white")
 
+# Set the Helvetica font for buttons
+button_font = Font(family="Helvetica", size=12)
+
 def toggle_fullscreen():
     state = window.attributes('-fullscreen')
     window.attributes('-fullscreen', not state)
@@ -16,7 +20,7 @@ def toggle_fullscreen():
 def change_background_color(color):
     window.configure(bg=color)
 
-FullscreenButton = tk.Button(window, text="Toggle Fullscreen", command=toggle_fullscreen)
+FullscreenButton = tk.Button(window, text="Toggle Fullscreen", command=toggle_fullscreen, font=button_font)
 FullscreenButton.pack(side="bottom", padx=10, pady=10)
 
 # Create the color selection dropdown menu
@@ -44,7 +48,7 @@ def on_color_selected(*args):
 
 color_options = ["White", "Natural Light", "Soft Glow", "Moonlight", "Daybreak", "Pure White", "Ivory", "Snow", "Pearl"]
 color_dropdown_menu = tk.OptionMenu(window, color_dropdown, *color_options, command=on_color_selected)
-color_dropdown_menu.config(direction="right")  # Set the dropdown menu to open on the right
+color_dropdown_menu.config(font="Helvetica 12", direction= "right")  # Set the font for the dropdown menu
 color_dropdown_menu.pack(side="bottom", padx=10, pady=10)
 
 # Run the application main loop
